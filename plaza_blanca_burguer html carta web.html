@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaza Blanca Burguer · Ampuero, Cantabria</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple:#8B3DC8;
+  --purple-dark:#5C1F8A;
+  --purple-light:#C07EF0;
+  --green:#7EC86A;
+  --green-dark:#4A9E38;
+  --white:#F8F5FF;
+  --black:#0D0D0D;
+}
+html{scroll-behavior:smooth}
+body{background:#0D0D0D;color:#F8F5FF;font-family:'Nunito',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:rgba(13,13,13,0.9);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(139,61,200,0.18);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;font-style:italic;color:var(--purple-light);text-decoration:none}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{font-size:0.78rem;font-weight:800;color:rgba(248,245,255,0.55);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--purple-light)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(139,61,200,0.2) 0%,transparent 70%);pointer-events:none}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(139,61,200,0.1);pointer-events:none;animation:pulse-ring 4s ease-in-out infinite}
+.hero-ring:nth-child(2){width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-ring:nth-child(3){width:720px;height:720px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:1.3s;border-color:rgba(126,200,106,0.07)}
+.hero-ring:nth-child(4){width:940px;height:940px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:2.6s}
+@keyframes pulse-ring{0%,100%{opacity:0.35;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.03)}}
+.hero-content{position:relative;text-align:center;z-index:2;padding:2rem 1.5rem}
+.hero-tagline{font-family:'Bebas Neue',sans-serif;font-size:clamp(0.82rem,2vw,1rem);letter-spacing:0.38em;color:var(--green);margin-bottom:1rem;text-transform:uppercase}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,9vw,5.5rem);font-weight:900;line-height:1.04;color:var(--white);margin-bottom:0.5rem}
+.hero-title span{color:var(--purple-light);font-style:italic;text-shadow:0 0 40px rgba(192,126,240,0.35)}
+.hero-sub{font-size:clamp(0.82rem,2vw,0.95rem);color:rgba(248,245,255,0.45);letter-spacing:0.18em;margin-bottom:2.5rem;font-weight:700;text-transform:uppercase}
+.hero-desc{max-width:520px;margin:0 auto 3rem;font-size:1.05rem;line-height:1.85;color:rgba(248,245,255,0.72)}
+.hero-desc em{color:var(--purple-light);font-style:normal;font-weight:800}
+.cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:0.9rem 2.4rem;border-radius:100px;font-family:'Nunito',sans-serif;font-weight:800;font-size:0.95rem;letter-spacing:0.03em;cursor:pointer;transition:all 0.25s ease;text-decoration:none;border:2px solid transparent}
+.btn-primary{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 0 30px rgba(139,61,200,0.3)}
+.btn-primary:hover{background:var(--purple-dark);transform:translateY(-2px);box-shadow:0 0 44px rgba(139,61,200,0.5)}
+.btn-secondary{background:transparent;color:var(--white);border-color:rgba(248,245,255,0.2)}
+.btn-secondary:hover{border-color:var(--purple-light);color:var(--purple-light);transform:translateY(-2px)}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;opacity:0.35;animation:bounce 2.2s ease-in-out infinite}
+.scroll-indicator span{font-size:0.68rem;letter-spacing:0.22em;font-weight:800;text-transform:uppercase}
+.scroll-arrow{width:18px;height:18px;border-right:2px solid var(--white);border-bottom:2px solid var(--white);transform:rotate(45deg)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--purple),var(--green),var(--purple),transparent);opacity:0.35}
+
+/* SECTION */
+.section-wrap{padding:5rem 1.5rem}
+.section-inner{max-width:920px;margin:0 auto}
+.section-inner-wide{max-width:1060px;margin:0 auto}
+.section-label{font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:0.35em;color:var(--green);margin-bottom:0.75rem;text-transform:uppercase}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--white);margin-bottom:1.5rem;line-height:1.08}
+.section-title em{color:var(--purple-light);font-style:italic}
+
+/* ABOUT */
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.about-text p{color:rgba(248,245,255,0.72);line-height:1.9;font-size:1rem;margin-bottom:1rem}
+.about-text p strong{color:var(--purple-light);font-weight:800}
+.about-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.badge{padding:0.3rem 0.9rem;border-radius:100px;font-size:0.78rem;font-weight:800;border:1.5px solid;letter-spacing:0.02em}
+.badge-purple{border-color:var(--purple);color:var(--purple-light);background:rgba(139,61,200,0.1)}
+.badge-green{border-color:var(--green-dark);color:var(--green);background:rgba(126,200,106,0.08)}
+.about-visual{display:flex;flex-direction:column;gap:1rem}
+.stat-card{background:rgba(139,61,200,0.07);border:1px solid rgba(139,61,200,0.2);border-radius:16px;padding:1.5rem 1.75rem;transition:all 0.3s}
+.stat-card:hover{border-color:rgba(139,61,200,0.45);background:rgba(139,61,200,0.12)}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:var(--purple-light);line-height:1;text-shadow:0 0 20px rgba(192,126,240,0.3)}
+.stat-label{font-size:0.85rem;color:rgba(248,245,255,0.52);margin-top:0.3rem;font-weight:600}
+
+/* GALERIA */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.gallery-item{border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;filter:brightness(0.85)}
+.gallery-item:hover img{transform:scale(1.06);filter:brightness(1)}
+.gallery-item.tall{grid-row:span 2;aspect-ratio:unset}
+
+/* CARTA - DESPLEGABLES */
+.menu-section{background:#080810}
+.menu-categories{display:flex;flex-direction:column;gap:1rem;margin-top:2.5rem}
+.menu-cat{border:1px solid rgba(139,61,200,0.18);border-radius:18px;overflow:hidden;transition:border-color 0.25s}
+.menu-cat.open{border-color:rgba(139,61,200,0.5)}
+.menu-cat-toggle{
+  width:100%;background:transparent;border:none;
+  padding:1.2rem 1.6rem;
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;color:var(--white);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+  transition:background 0.2s;
+}
+.menu-cat-toggle:hover{background:rgba(139,61,200,0.07)}
+.menu-cat-left{display:flex;align-items:center;gap:0.9rem}
+.menu-cat-icon{font-size:1.4rem}
+.menu-cat-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700}
+.menu-cat-count{font-size:0.75rem;color:rgba(248,245,255,0.4);font-weight:600;font-family:'Nunito',sans-serif}
+.menu-cat-arrow{font-size:0.65rem;color:rgba(248,245,255,0.35);transition:transform 0.28s;display:inline-block}
+.menu-cat.open .menu-cat-arrow{transform:rotate(180deg)}
+.menu-cat-body{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.menu-cat.open .menu-cat-body{max-height:4000px}
+.menu-cat-inner{padding:0 1.6rem 1.6rem;display:flex;flex-direction:column;gap:0}
+.menu-item{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid rgba(248,245,255,0.06);
+}
+.menu-item:last-child{border-bottom:none}
+.menu-item-info{flex:1}
+.menu-item-name{font-weight:800;font-size:0.95rem;color:var(--white);margin-bottom:0.25rem}
+.menu-item-desc{font-size:0.8rem;color:rgba(248,245,255,0.5);line-height:1.65;margin-bottom:0.4rem}
+.menu-item-sub{font-size:0.76rem;color:rgba(248,245,255,0.38);font-weight:600;margin-bottom:0.35rem}
+.allergens{display:flex;flex-wrap:wrap;gap:0.28rem;margin-top:0.4rem}
+.allergen{
+  font-size:0.65rem;font-weight:800;
+  padding:0.18rem 0.55rem;border-radius:100px;
+  border:1px solid;letter-spacing:0.03em;text-transform:uppercase;
+}
+.al-gluten{border-color:#c8843d;color:#e8a060;background:rgba(200,132,61,0.1)}
+.al-lacteos{border-color:#4a8ec8;color:#7ab8e8;background:rgba(74,142,200,0.1)}
+.al-huevos{border-color:#c8b83d;color:#e8d860;background:rgba(200,184,61,0.1)}
+.al-pescado{border-color:#3d7ac8;color:#6aA0e8;background:rgba(61,122,200,0.1)}
+.al-moluscos{border-color:#5a3dc8;color:#8a6ae8;background:rgba(90,61,200,0.1)}
+.al-crustaceos{border-color:#c83d5a;color:#e86a8a;background:rgba(200,61,90,0.1)}
+.al-cacahuetes{border-color:#8ac83d;color:#aaE860;background:rgba(138,200,61,0.1)}
+.al-mostaza{border-color:#c8a83d;color:#e8c860;background:rgba(200,168,61,0.1)}
+.al-soja{border-color:#7ac83d;color:#9aE860;background:rgba(122,200,61,0.1)}
+.al-sulfitos{border-color:#c83dc8;color:#e860e8;background:rgba(200,61,200,0.1)}
+.al-frutos{border-color:#c8603d;color:#e8803d;background:rgba(200,96,61,0.1)}
+.al-sesamo{border-color:#c8c83d;color:#e8e860;background:rgba(200,200,61,0.1)}
+.al-apio{border-color:#3dc880;color:#60e8a0;background:rgba(61,200,128,0.1)}
+.menu-item-price{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);
+  white-space:nowrap;line-height:1;padding-top:2px;min-width:70px;text-align:right;
+}
+.menu-section-sub{
+  font-family:'Bebas Neue',sans-serif;font-size:0.8rem;letter-spacing:0.22em;
+  color:var(--green);text-transform:uppercase;padding:0.9rem 0 0.2rem;
+  border-top:1px solid rgba(126,200,106,0.15);margin-top:0.5rem;
+}
+.menu-section-sub:first-child{border-top:none;margin-top:0}
+
+/* HAMBURGUER CARDS */
+.burger-featured-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.burger-card{background:#0f0f1a;border:1px solid rgba(139,61,200,0.2);border-radius:22px;padding:1.85rem;position:relative;overflow:hidden;transition:all 0.32s ease}
+.burger-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--green));opacity:0;transition:opacity 0.3s}
+.burger-card:hover{border-color:rgba(139,61,200,0.5);transform:translateY(-4px);background:#121220}
+.burger-card:hover::before{opacity:1}
+.burger-card.featured{border-color:rgba(139,61,200,0.55);background:linear-gradient(145deg,#0f0f1a,#160d24);box-shadow:0 0 40px rgba(139,61,200,0.1)}
+.burger-card.featured::before{opacity:1}
+.card-badge-wrap{margin-bottom:1rem}
+.card-badge{display:inline-block;padding:0.28rem 0.8rem;border-radius:100px;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em}
+.badge-star{background:var(--purple);color:#fff}
+.card-emoji{font-size:2.4rem;margin-bottom:0.75rem;display:block}
+.card-name{font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;line-height:1.1}
+.card-name em{color:var(--purple-light);font-style:italic}
+.card-award{display:flex;align-items:flex-start;gap:0.5rem;background:rgba(139,61,200,0.1);border:1px solid rgba(139,61,200,0.28);border-radius:10px;padding:0.6rem 0.85rem;margin-bottom:0.85rem;font-size:0.78rem;font-weight:700;color:var(--purple-light);line-height:1.4}
+.card-desc{font-size:0.88rem;color:rgba(248,245,255,0.55);line-height:1.75;margin-bottom:1.1rem}
+.card-ings{list-style:none;display:flex;flex-direction:column;gap:0.32rem;margin-bottom:1.4rem}
+.card-ings li{font-size:0.8rem;color:rgba(248,245,255,0.48);display:flex;align-items:center;gap:0.5rem}
+.card-ings li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+.card-footer{display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid rgba(248,245,255,0.07);padding-top:1.1rem}
+.card-price{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--white);line-height:1}
+.card-price span{font-size:1.1rem;color:rgba(248,245,255,0.45);font-family:'Nunito',sans-serif;font-weight:700}
+.card-includes{font-size:0.72rem;color:rgba(248,245,255,0.38);text-align:right;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;line-height:1.5}
+
+/* SLOGAN BANNER */
+.slogan-banner{text-align:center;padding:4.5rem 1.5rem;position:relative;overflow:hidden;background:#080810}
+.slogan-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(139,61,200,0.13) 0%,transparent 70%)}
+.slogan-text{position:relative;font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,4rem);font-weight:900;font-style:italic;color:var(--purple-light);text-shadow:0 0 30px rgba(192,126,240,0.4),0 0 60px rgba(192,126,240,0.18);line-height:1.15}
+
+/* HORARIO */
+.horario-wrapper{max-width:580px}
+.schedule-item{border:1px solid rgba(139,61,200,0.15);border-radius:14px;overflow:hidden;margin-bottom:0.7rem;transition:border-color 0.25s}
+.schedule-item.open{border-color:rgba(139,61,200,0.48)}
+.schedule-toggle{width:100%;background:transparent;border:none;padding:1.05rem 1.35rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;color:var(--white);font-family:'Nunito',sans-serif;font-weight:800;font-size:0.95rem;transition:background 0.2s}
+.schedule-toggle:hover{background:rgba(139,61,200,0.07)}
+.schedule-day{display:flex;align-items:center;gap:0.75rem}
+.day-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 6px rgba(126,200,106,0.6)}
+.day-dot.closed{background:rgba(248,245,255,0.18);box-shadow:none}
+.schedule-right{display:flex;align-items:center;gap:0.75rem}
+.schedule-time-preview{font-size:0.82rem;color:rgba(248,245,255,0.42);font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:0.05em}
+.schedule-arrow{font-size:0.65rem;color:rgba(248,245,255,0.32);transition:transform 0.25s ease;display:inline-block}
+.schedule-item.open .schedule-arrow{transform:rotate(180deg)}
+.schedule-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease}
+.schedule-item.open .schedule-body{max-height:200px}
+.schedule-detail{padding:0 1.35rem 1.35rem;display:flex;flex-direction:column;gap:0.5rem}
+.time-slot{display:flex;align-items:center;justify-content:space-between;padding:0.55rem 0.9rem;background:rgba(139,61,200,0.07);border-radius:8px}
+.time-label{font-size:0.8rem;color:rgba(248,245,255,0.52);font-weight:700;text-transform:uppercase;letter-spacing:0.05em}
+.time-value{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--purple-light);letter-spacing:0.05em}
+.closed-msg{padding:0.5rem 0.9rem;font-size:0.82rem;color:rgba(248,245,255,0.28);font-style:italic;line-height:1.6}
+
+/* FOOTER */
+footer{background:#050508;border-top:1px solid rgba(139,61,200,0.2);text-align:center;padding:3.5rem 1.5rem}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--purple-light);font-style:italic;margin-bottom:0.5rem;text-shadow:0 0 20px rgba(192,126,240,0.28)}
+.footer-slogan{font-size:0.85rem;color:var(--green);letter-spacing:0.25em;font-family:'Bebas Neue',sans-serif;margin-bottom:0.75rem}
+.footer-tel{font-size:0.95rem;color:rgba(248,245,255,0.55);font-weight:700;margin-bottom:0.4rem}
+.footer-social{font-size:0.82rem;color:rgba(248,245,255,0.35);margin-bottom:1.5rem}
+.footer-copy{font-size:0.72rem;color:rgba(248,245,255,0.18);font-weight:600}
+
+/* ANIMATE */
+.fade-in{opacity:0;transform:translateY(26px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+  .about-inner{grid-template-columns:1fr;gap:2rem}
+  .nav-links{display:none}
+  .hero-ring{display:none}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item.tall{grid-row:unset}
+  .burger-featured-wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Plaza Blanca Burguer</a>
+  <div class="nav-links">
+    <a href="#sobre">Nosotros</a>
+    <a href="#carta">Carta</a>
+    <a href="#horario">Horario</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-content">
+    <div class="hero-tagline">Ampuero · Cantabria · España</div>
+    <h1 class="hero-title">Plaza<br><span>Blanca</span><br>Burguer</h1>
+    <div class="hero-sub">Todo lo rico... ¡Mancha!</div>
+    <p class="hero-desc">Hamburguesas <em>artesanas</em> con alma. Ingredientes locales, recetas propias y ese sabor que solo consigues cuando alguien cocina con ganas de verdad.</p>
+    <div class="cta-group">
+      <a class="btn btn-primary" href="#carta">Ver la carta</a>
+      <a class="btn btn-secondary" href="#horario">Horario</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Desliza</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOBRE NOSOTROS -->
+<div id="sobre" style="background:#0D0D0D">
+  <div class="section-wrap">
+    <div class="section-inner">
+      <div class="about-inner">
+        <div class="about-text fade-in">
+          <div class="section-label">Quiénes somos</div>
+          <h2 class="section-title">Casero de<br><em>corazón</em></h2>
+          <p>En Plaza Blanca Burguer hacemos las cosas como se han hecho siempre: <strong>con manos, con tiempo y con ganas</strong>. Cada salsa, cada mermelada, cada detalle sale de nuestra cocina, no de un proveedor.</p>
+          <p>Trabajamos con lo mejor de la tierra: carne madurada de <strong>Carnicería Céspedes</strong>, pan brioche artesano de <strong>Pastelería Torrente</strong> y una <strong>vaca rubia gallega</strong> que habla por sí sola.</p>
+          <p>Somos la hamburguesa que te deja la camiseta manchada y la sonrisa bien grande.</p>
+          <div class="about-badges">
+            <span class="badge badge-purple">Ingredientes locales</span>
+            <span class="badge badge-purple">Salsas caseras</span>
+            <span class="badge badge-green">Carne madurada</span>
+            <span class="badge badge-green">Pan artesano</span>
+          </div>
+        </div>
+        <div class="about-visual fade-in delay-2">
+          <div class="stat-card"><div class="stat-num">180g</div><div class="stat-label">de carne por hamburguesa, siempre</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">salsas y mermeladas hechas en casa</div></div>
+          <div class="stat-card"><div class="stat-num">#1</div><div class="stat-label">Mejor hamburguesa de Cantabria 2026</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GALERIA -->
+<div style="background:#080810">
+  <div class="section-wrap">
+    <div class="section-inner">
+      <div class="fade-in">
+        <div class="section-label">El local</div>
+        <h2 class="section-title">Ven a<br><em>mancharte</em></h2>
+      </div>
+      <div class="gallery-grid fade-in delay-1">
+        <div class="gallery-item tall" style="grid-row:span 2;aspect-ratio:unset;min-height:340px">
+          <img src="e0ab28ff-9b51-4297-b767-dad1e1fb41b4.jpg" alt="Exoti-K Burguer del mes PBB" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="add3becb-7595-4b4f-a99e-c40dab8fdfd9.jpg" alt="Game Over - Mejor hamburguesa Cantabria 2026" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="todo_lo_rico_mancha_png.png" alt="Todo lo rico mancha - Plaza Blanca Burguer" loading="lazy" style="object-position:center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HAMBURGUESAS DESTACADAS -->
+<div id="carta" style="background:#0D0D0D">
+  <div class="section-wrap">
+    <div class="section-inner-wide">
+      <div class="fade-in">
+        <div class="section-label">Nuestras estrellas</div>
+        <h2 class="section-title">Elige tu<br><em>aventura</em></h2>
+      </div>
+      <div class="burger-featured-wrap">
+        <!-- GAME OVER -->
+        <div class="burger-card featured fade-in">
+          <div class="card-badge-wrap"><span class="card-badge badge-star">⭐ Estrella de la casa</span></div>
+          <span class="card-emoji">🏆</span>
+          <div class="card-name"><em>Game Over</em></div>
+          <div class="card-award">
+            <span>🥇</span> Mejor hamburguesa de Cantabria 2026 · BestBurgerSpain
+          </div>
+          <p class="card-desc">La que empieza el juego. Galardonada como mejor hamburguesa de Cantabria 2026. Una experiencia que no vas a olvidar.</p>
+          <ul class="card-ings">
+            <li>Pan brioche artesano</li>
+            <li>180g medallón de vaca rubia gallega</li>
+            <li>Salsa cremosa secreta</li>
+            <li>Queso ahumado</li>
+            <li>Mermelada de bacon casera</li>
+            <li>Pepinillo encurtido en casa</li>
+            <li>Mayo a base de jugo de carne</li>
+          </ul>
+          <div class="card-footer">
+            <div class="card-price">16<span>,00 €</span></div>
+            <div class="card-includes">Con patatas<br>fritas caseras</div>
+          </div>
+        </div>
+        <!-- EXOTI-K -->
+        <div class="burger-card fade-in delay-1">
+          <span class="card-emoji">🔥</span>
+          <div class="card-name"><em>Exoti-K</em></div>
+          <p class="card-desc">Atrevida, diferente y totalmente adictiva. Con ese punto exótico que la hace única.</p>
+          <ul class="card-ings">
+            <li>Pan brioche artesano "Pastelería Torrente"</li>
+            <li>180g carne de vaca madurada "Carnicería Céspedes"</li>
+            <li>Mermelada de bacon casera</li>
+            <li>Queso ahumado</li>
+            <li>Relish de pepinillo</li>
+            <li>Salsa Emmy casera</li>
+            <li>Crujiente de Kikos</li>
+          </ul>
+          <div class="allergens" style="margin-bottom:1.1rem">
+            <span class="allergen al-gluten">Gluten</span>
+            <span class="allergen al-lacteos">Lácteos</span>
+            <span class="allergen al-frutos">Frutos cáscara</span>
+            <span class="allergen al-sesamo">Granos sésamo</span>
+            <span class="allergen al-pescado">Pescado</span>
+            <span class="allergen al-cacahuetes">Cacahuetes</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">14<span>,00 €</span></div>
+            <div class="card-includes">Con patatas<br>fritas caseras</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CARTA COMPLETA DESPLEGABLE -->
+<div class="menu-section">
+  <div class="section-wrap">
+    <div class="section-inner-wide">
+      <div class="fade-in">
+        <div class="section-label">La carta completa</div>
+        <h2 class="section-title">Todo lo<br><em>rico</em></h2>
+        <p style="color:rgba(248,245,255,0.45);margin-bottom:2.5rem;font-size:0.95rem;font-weight:600">Pulsa cada categoría para ver todos los platos.</p>
+      </div>
+
+      <div class="menu-categories fade-in">
+
+        <!-- HAMBURGUESAS -->
+        <div class="menu-cat" id="cat-burgers">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-burgers')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🍔</span>
+              <div>
+                <div class="menu-cat-name">Hamburguesas</div>
+                <div class="menu-cat-count">9 opciones · desde 9,00 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Plaza</div>
+                  <div class="menu-item-desc">Pan rústico, 180g de carne de vaca madurada, lechuga, tomate, queso Cheddar, jamón york y huevo.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">9,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La de Cabra</div>
+                  <div class="menu-item-desc">Pan rústico, 180g de carne de vaca, lechuga, bacon, medallón de queso de cabra, cebolla caramelizada y mermelada de tomate.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">10,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Ibérica</div>
+                  <div class="menu-item-desc">Pan rústico, 180g de carne de vaca madurada, lechuga, tomate, salsa de foie, paleta ibérica y cebolla caramelizada.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">11,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Baby</div>
+                  <div class="menu-item-desc">Pan brioche artesano, 180g de carne de vaca madurada, doble de queso Cheddar, nuestra salsa BBQ y aros de cebolla.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">11,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Winnie</div>
+                  <div class="menu-item-desc">Pan brioche artesano, 180g de carne de vaca madurada, lechuga, tomate, bacon, queso Cheddar, cebolla caramelizada, huevo, salsa de miel y mostaza. Con patatas fritas.</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span><span class="allergen al-mostaza">Mostaza</span><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">13,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Pista-Roll</div>
+                  <div class="menu-item-desc">Pan de croissant artesano, 180g de carne de vaca madurada, doble queso Cheddar, bacon crujiente y salsa de pistacho y su crumble. Con patatas fritas.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">14,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Vegana</div>
+                  <div class="menu-item-desc">Pan brioche, carne vegana "Beyond", lechuga, tomate, cebolla plancha, pimiento rojo caramelizado y crema de setas. Con patatas fritas.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-soja">Soja</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Tentación</div>
+                  <div class="menu-item-desc">Pan brioche artesano, 180g de carne de vaca madurada, queso Cheddar, cebolla caramelizada, huevo, queso parmesano rallado y mahonesa trufada. Con patatas fritas.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">15,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">La Mr. Olympia</div>
+                  <div class="menu-item-desc">Pan brioche, contramuslo de pollo rebozado estilo "Kentuky", lechuga, tomate, queso Cheddar, relish de pepinillo y nuestra salsa "estilo americano". Con patatas fritas.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-mostaza">Mostaza</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">14,00€</div>
+              </div>
+
+              <div class="menu-item" style="border-top:1px solid rgba(126,200,106,0.15);margin-top:0.5rem">
+                <div class="menu-item-info">
+                  <div class="menu-item-name" style="color:var(--green)">Extras</div>
+                  <div class="menu-item-desc">Guarnición de patatas: 2,50 € · Doble de carne: 3,00 €</div>
+                  <div class="menu-item-desc" style="color:var(--purple-light);font-style:italic;margin-top:0.3rem">¡Cada mes una nueva Burger del mes con sabores auténticos! Pregunta por ella.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTRANTES -->
+        <div class="menu-cat" id="cat-entrantes">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-entrantes')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🦑</span>
+              <div>
+                <div class="menu-cat-name">Entrantes</div>
+                <div class="menu-cat-count">8 opciones · desde 8,00 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Rabas</div>
+                  <div class="menu-item-desc">Calamar patagónico, limpiados y cortados a mano, rebozados en una combinación de harinas de maíz y trigo.</div>
+                  <div class="menu-item-sub">½ ración: 6,50 €</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-moluscos">Moluscos</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Torreznos</div>
+                  <div class="menu-item-desc">Ración de 10 torreznos de Soria crujientes y dorados.</div>
+                  <div class="menu-item-sub">½ ración: 6,00 €</div>
+                </div>
+                <div class="menu-item-price">10,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Croquetas Caseras</div>
+                  <div class="menu-item-desc">De paleta ibérica o cecina con queso de cabra (8 unid.).</div>
+                  <div class="menu-item-sub">½ ración: 7,50 €</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Alitas Koreanas</div>
+                  <div class="menu-item-desc">6 unidades de jugosas y crujientes alitas, bañadas en salsa casera al estilo "Teriyaki" y finalizadas con un toque de polvo de Kikos.</div>
+                  <div class="allergens"><span class="allergen al-soja">Soja</span><span class="allergen al-sulfitos">Sulfitos</span><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">9,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Patatas Carbonara Trufadas</div>
+                  <div class="menu-item-desc">Patatas caseras bañadas en una cremosa salsa carbonara con trufa y rematadas con queso parmesano.</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">9,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Patatas Cheddar – Bacon</div>
+                  <div class="menu-item-desc">Patatas caseras bañadas en salsa de queso cheddar con crujiente de bacon.</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">8,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Patatas Bravas</div>
+                  <div class="menu-item-desc">Patatas caseras con salsa brava y mahonesa.</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">8,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Mejillones Plaza / Tomate</div>
+                  <div class="menu-item-desc">Bañados en nuestra salsa casera con un toque picante o con nuestra salsa brava.</div>
+                  <div class="allergens"><span class="allergen al-moluscos">Moluscos</span><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">11,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Fingers de Pollo</div>
+                  <div class="menu-item-desc">Tiras de pollo acompañadas con salsa sweet chilly y curry-cacahuete.</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-gluten">Gluten</span><span class="allergen al-mostaza">Mostaza</span><span class="allergen al-cacahuetes">Cacahuetes</span></div>
+                </div>
+                <div class="menu-item-price">9,50€</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- CLÁSICOS DEL PLAZA -->
+        <div class="menu-cat" id="cat-clasicos">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-clasicos')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🏛️</span>
+              <div>
+                <div class="menu-cat-name">Los Clásicos del Plaza</div>
+                <div class="menu-cat-count">Si algo funciona, ¿para qué cambiarlo?</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Bacalao con Tomate y Pimientos</div>
+                  <div class="menu-item-desc">Bacalao frito con salsa de tomate casera y pimientos del piquillo.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-pescado">Pescado</span></div>
+                </div>
+                <div class="menu-item-price">19,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Pimientos Caseros Rellenos de Marisco</div>
+                  <div class="menu-item-desc">Pimientos del piquillo rellenos con nuestra bechamel casera de marisco.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-pescado">Pescado</span><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-moluscos">Moluscos</span><span class="allergen al-soja">Soja</span><span class="allergen al-sulfitos">Sulfitos</span></div>
+                </div>
+                <div class="menu-item-price">11,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Jibiones Encebollados</div>
+                  <div class="menu-item-desc">Jibiones guisados con cebolla y un toque de vino blanco.</div>
+                  <div class="allergens"><span class="allergen al-moluscos">Moluscos</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Albóndigas</div>
+                  <div class="menu-item-desc">Albóndigas tradicionales como las de la abuela, acompañadas de patatas fritas caseras.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">11,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Morros y Callos</div>
+                  <div class="menu-item-desc">Guisados al estilo tradicional.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Entrecot de Vaca con Patatas Fritas y Pimientos de Piquillo</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">21,00€</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- EMBUTIDOS -->
+        <div class="menu-cat" id="cat-embutidos">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-embutidos')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🥩</span>
+              <div>
+                <div class="menu-cat-name">Embutidos</div>
+                <div class="menu-cat-count">2 opciones</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info"><div class="menu-item-name">Paleta Ibérica</div></div>
+                <div class="menu-item-price">15,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info"><div class="menu-item-name">Cecina</div></div>
+                <div class="menu-item-price">14,00€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENSALADAS -->
+        <div class="menu-cat" id="cat-ensaladas">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-ensaladas')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🥗</span>
+              <div>
+                <div class="menu-cat-name">Ensaladas</div>
+                <div class="menu-cat-count">3 opciones · desde 12,00 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Ensalada Plaza</div>
+                  <div class="menu-item-desc">Lechuga fresca, tomate, cebolla, pimientos del piquillo caramelizados, atún, queso de las Garmillas, huevo cocido y aceitunas, terminada con una crema de vinagre de módena.</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span><span class="allergen al-sulfitos">Sulfitos</span><span class="allergen al-soja">Soja</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">12,50€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Ensalada de Queso de Cabra</div>
+                  <div class="menu-item-desc">Brotes de lechuga con tomate cherry, frutos secos, orejones, queso de cabra y finas láminas de cecina, todo bañado en nuestra vinagreta casera.</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-soja">Soja</span><span class="allergen al-sulfitos">Sulfitos</span><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">14,00€</div>
+              </div>
+
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Ensalada de Ventresca</div>
+                  <div class="menu-item-desc">Pimientos de piquillo, ventresca, cebolla caramelizada, anchoas y crema de módena.</div>
+                  <div class="allergens"><span class="allergen al-pescado">Pescado</span><span class="allergen al-sulfitos">Sulfitos</span></div>
+                </div>
+                <div class="menu-item-price">12,00€</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- SARTENADAS -->
+        <div class="menu-cat" id="cat-sartenadas">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-sartenadas')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🍳</span>
+              <div>
+                <div class="menu-cat-name">Sartenadas</div>
+                <div class="menu-cat-count">Huevos, patatas caseras y… · 4 opciones</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Salchichas</div>
+                  <div class="allergens"><span class="allergen al-soja">Soja</span><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">9,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Paleta Ibérica</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">12,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Gulas y Gambas</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-crustaceos">Crustáceos</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-pescado">Pescado</span><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-moluscos">Moluscos</span><span class="allergen al-soja">Soja</span><span class="allergen al-sulfitos">Sulfitos</span></div>
+                </div>
+                <div class="menu-item-price">11,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Setas</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">11,00€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REVUELTOS -->
+        <div class="menu-cat" id="cat-revueltos">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-revueltos')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🥚</span>
+              <div>
+                <div class="menu-cat-name">Revueltos</div>
+                <div class="menu-cat-count">Huevos con… · 3 opciones</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Setas</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">8,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Gulas y Gambas</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">9,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">con Bacalao</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-pescado">Pescado</span><span class="allergen al-moluscos">Moluscos</span><span class="allergen al-soja">Soja</span><span class="allergen al-sulfitos">Sulfitos</span></div>
+                </div>
+                <div class="menu-item-price">9,00€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOCADILLOS -->
+        <div class="menu-cat" id="cat-bocadillos">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-bocadillos')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🥖</span>
+              <div>
+                <div class="menu-cat-name">Bocadillos</div>
+                <div class="menu-cat-count">6 opciones · desde 6,50 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Ibérico</div>
+                  <div class="menu-item-desc">Paleta ibérica + pan tumaca.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">8,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Rabas</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-moluscos">Moluscos</span></div>
+                </div>
+                <div class="menu-item-price">7,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Plaza</div>
+                  <div class="menu-item-desc">Pechuga o lomo, queso Havarti, jamón york y salsa ali-oli.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">6,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Pepipollo</div>
+                  <div class="menu-item-desc">Pechuga, lechuga, tomate, mahonesa y salsa picante.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-huevos">Huevos</span></div>
+                </div>
+                <div class="menu-item-price">7,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Ternera Queso Azul</div>
+                  <div class="menu-item-desc">Ternera, salsa de queso azul casera y cebolla caramelizada.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">7,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Pollo Trufado</div>
+                  <div class="menu-item-desc">Pollo, queso Havarti, cebolla caramelizada y mahonesa trufada.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">8,00€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SANDWICHES -->
+        <div class="menu-cat" id="cat-sandwiches">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-sandwiches')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🥪</span>
+              <div>
+                <div class="menu-cat-name">Sandwiches</div>
+                <div class="menu-cat-count">3 opciones · desde 4,00 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Mixto</div>
+                  <div class="menu-item-desc">Jamón york y queso Havarti.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">4,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Vegetal</div>
+                  <div class="menu-item-desc">Lechuga, tomate, mahonesa, huevo, jamón york y queso Havarti.</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">5,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Mixto + Huevo + Bacon + Salsa Rosa</div>
+                  <div class="allergens"><span class="allergen al-huevos">Huevos</span><span class="allergen al-gluten">Gluten</span><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">5,50€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAN -->
+        <div class="menu-cat" id="cat-pan">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-pan')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🧺</span>
+              <div>
+                <div class="menu-cat-name">Pan</div>
+                <div class="menu-cat-count">2 opciones</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Cesto Pequeño</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">1,40€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Cesto Grande</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">1,80€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POSTRES -->
+        <div class="menu-cat" id="cat-postres">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-postres')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🍰</span>
+              <div>
+                <div class="menu-cat-name">Postres</div>
+                <div class="menu-cat-count">6 opciones · desde 2,00 €</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Tarta de Queso al Horno</div>
+                  <div class="menu-item-desc">Para compartir 2 ó 3 personas. Sabores: Lotus, Kinder, Clásica, sabor del mes.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span></div>
+                </div>
+                <div class="menu-item-price">14,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Porción de Tarta de Queso al Horno Clásica</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">6,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Arroz con Leche</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span></div>
+                </div>
+                <div class="menu-item-price">4,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Helado Almendrado</div>
+                  <div class="allergens"><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-frutos">Frutos cáscara</span></div>
+                </div>
+                <div class="menu-item-price">2,00€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Bañadito</div>
+                  <div class="menu-item-desc">Donuts artesano con salsas chocolate blanco, negro o pistacho y sus topping cookies, oreo o pistacho.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-soja">Soja</span><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-sesamo">Sésamo</span></div>
+                </div>
+                <div class="menu-item-price">5,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Gofre</div>
+                  <div class="menu-item-desc">Con salsa chocolate blanco, negro o pistacho y sus topping cookies, oreo o pistacho.</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-soja">Soja</span><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-sesamo">Sésamo</span></div>
+                </div>
+                <div class="menu-item-price">6,50€</div>
+              </div>
+              <div class="menu-item">
+                <div class="menu-item-info">
+                  <div class="menu-item-name">Gofre + Salsas + Topping + Helado</div>
+                  <div class="allergens"><span class="allergen al-gluten">Gluten</span><span class="allergen al-frutos">Frutos cáscara</span><span class="allergen al-huevos">Huevos</span><span class="allergen al-soja">Soja</span><span class="allergen al-lacteos">Lácteos</span><span class="allergen al-sesamo">Sésamo</span></div>
+                </div>
+                <div class="menu-item-price">7,00€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VINOS -->
+        <div class="menu-cat" id="cat-vinos">
+          <button class="menu-cat-toggle" onclick="toggleCat('cat-vinos')">
+            <div class="menu-cat-left">
+              <span class="menu-cat-icon">🍷</span>
+              <div>
+                <div class="menu-cat-name">Vinos y Jarras</div>
+                <div class="menu-cat-count">¡Es hora de brindar!</div>
+              </div>
+            </div>
+            <span class="menu-cat-arrow">▼</span>
+          </button>
+          <div class="menu-cat-body">
+            <div class="menu-cat-inner">
+
+              <div class="menu-section-sub">Tintos</div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Cosechero Morenitos</div></div><div class="menu-item-price">6,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Cosechero Casa Dinastía</div></div><div class="menu-item-price">9,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Bordón</div></div><div class="menu-item-price">14,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Medievo</div></div><div class="menu-item-price">14,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Ramón Bilbao</div></div><div class="menu-item-price">17,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Resalso</div></div><div class="menu-item-price">18,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Campillo</div></div><div class="menu-item-price">20,00€</div></div>
+
+              <div class="menu-section-sub">Rosados</div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Cosechero</div></div><div class="menu-item-price">6,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Lambrusco</div></div><div class="menu-item-price">8,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Cordovín</div></div><div class="menu-item-price">9,50€</div></div>
+
+              <div class="menu-section-sub">Blancos</div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Verdejo – Pastor</div></div><div class="menu-item-price">10,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Verdejo – Garedo</div></div><div class="menu-item-price">11,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Moscato</div></div><div class="menu-item-price">12,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Albariño</div></div><div class="menu-item-price">16,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Mikaela</div></div><div class="menu-item-price">18,00€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">José Pariente</div></div><div class="menu-item-price">19,00€</div></div>
+
+              <div class="menu-section-sub">Jarras</div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Jarra de Cerveza</div></div><div class="menu-item-price">9,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Jarra de Calimotxo</div></div><div class="menu-item-price">8,50€</div></div>
+              <div class="menu-item"><div class="menu-item-info"><div class="menu-item-name">Jarra de Sangría</div></div><div class="menu-item-price">10,00€</div></div>
+
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fin menu-categories -->
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SLOGAN BANNER -->
+<div class="slogan-banner">
+  <div class="slogan-text">"Todo lo rico...<br>¡Mancha!"</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HORARIO -->
+<div id="horario" style="background:#0D0D0D">
+  <div class="section-wrap">
+    <div class="section-inner">
+      <div class="fade-in">
+        <div class="section-label">Cuándo nos encuentras</div>
+        <h2 class="section-title">Horario<br><em>semanal</em></h2>
+        <p style="color:rgba(248,245,255,0.45);margin-bottom:2.25rem;font-size:0.95rem;font-weight:600">Pulsa cada día para ver el horario completo.</p>
+      </div>
+      <div class="horario-wrapper fade-in">
+
+        <div class="schedule-item" id="lunes">
+          <button class="schedule-toggle" onclick="toggleDay('lunes')">
+            <div class="schedule-day"><div class="day-dot"></div><span>Lunes</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview">9:00 – 23:00</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="time-slot"><span class="time-label">Horario</span><span class="time-value">9:00 – 23:00</span></div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="martes">
+          <button class="schedule-toggle" onclick="toggleDay('martes')">
+            <div class="schedule-day"><div class="day-dot closed"></div><span>Martes</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview" style="color:rgba(248,245,255,0.25)">Cerrado</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="closed-msg">Descansamos los martes 💜</div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="miercoles">
+          <button class="schedule-toggle" onclick="toggleDay('miercoles')">
+            <div class="schedule-day"><div class="day-dot closed"></div><span>Miércoles</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview" style="color:rgba(248,245,255,0.25)">Cerrado</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="closed-msg">Descansamos los miércoles 💜</div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="jueves">
+          <button class="schedule-toggle" onclick="toggleDay('jueves')">
+            <div class="schedule-day"><div class="day-dot"></div><span>Jueves</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview">9:00 – 24:00</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="time-slot"><span class="time-label">Horario</span><span class="time-value">9:00 – 24:00</span></div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="viernes">
+          <button class="schedule-toggle" onclick="toggleDay('viernes')">
+            <div class="schedule-day"><div class="day-dot"></div><span>Viernes</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview">9:00 – 24:00</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="time-slot"><span class="time-label">Horario</span><span class="time-value">9:00 – 24:00</span></div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="sabado">
+          <button class="schedule-toggle" onclick="toggleDay('sabado')">
+            <div class="schedule-day"><div class="day-dot"></div><span>Sábado</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview">9:00 – 24:00</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="time-slot"><span class="time-label">Horario</span><span class="time-value">9:00 – 24:00</span></div>
+          </div></div>
+        </div>
+
+        <div class="schedule-item" id="domingo">
+          <button class="schedule-toggle" onclick="toggleDay('domingo')">
+            <div class="schedule-day"><div class="day-dot"></div><span>Domingo</span></div>
+            <div class="schedule-right"><span class="schedule-time-preview">9:00 – 23:00</span><span class="schedule-arrow">▼</span></div>
+          </button>
+          <div class="schedule-body"><div class="schedule-detail">
+            <div class="time-slot"><span class="time-label">Horario</span><span class="time-value">9:00 – 23:00</span></div>
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Plaza Blanca Burguer</div>
+  <div class="footer-slogan">Todo lo rico... ¡Mancha!</div>
+  <div class="footer-tel">📞 942 682 286</div>
+  <div class="footer-social">Instagram: @plazablanca_ampuero · Facebook: Plaza Blanca Ampuero</div>
+  <div class="footer-copy">Ampuero, Cantabria · Plaza Blanca Burguer © 2026</div>
+</footer>
+
+<script>
+function toggleCat(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+}
+function toggleDay(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+}
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
